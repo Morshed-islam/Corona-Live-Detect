@@ -78,34 +78,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    private void getCountriesData() {
 
-        ApiInterface apiInterface = ApiUtils.getApiInterface();
-        Call<List<GetCountryModel>> call = apiInterface.getCountryDetails();
-
-        call.enqueue(new Callback<List<GetCountryModel>>() {
-            @Override
-            public void onResponse(Call<List<GetCountryModel>> call, Response<List<GetCountryModel>> response) {
-
-                if (response.isSuccessful()) {
-
-                    for (GetCountryModel model : response.body()) {
-                        Log.e("countries", "onResponse: " + model.getCountry());
-                    }
-
-                } else {
-                    Toast.makeText(MainActivity.this, "below response", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<GetCountryModel>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Server Error!", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-    }
 
     private void loadFragment(Fragment fragment) {
         // load fragment

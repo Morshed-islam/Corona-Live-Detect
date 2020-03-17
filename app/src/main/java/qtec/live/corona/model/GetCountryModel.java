@@ -30,6 +30,9 @@ public class GetCountryModel {
     @Expose
     private Integer critical;
 
+
+
+
     public String getCountry() {
         return country;
     }

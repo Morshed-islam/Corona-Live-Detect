@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
 
@@ -33,7 +33,7 @@
                     android:id="@+id/tv_cases"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Today"
+                    android:text="cases"
                     android:textColor="@color/black"
                     android:textSize="20sp"/>
 
@@ -41,7 +41,7 @@
                     android:id="@+id/tv_cases_today"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Active"
+                    android:text="Today"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -49,7 +49,7 @@
                     android:id="@+id/tv_cases_active"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Country"
+                    android:text="Active"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -64,7 +64,7 @@
                     android:id="@+id/tv_deaths"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cases"
+                    android:text="death"
                     android:textColor="@color/black"
                     android:textSize="20sp"/>
 
@@ -72,7 +72,7 @@
                     android:id="@+id/tv_deaths_today"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Country"
+                    android:text="today"
                     android:textColor="@color/black"
                     android:textSize="20sp"/>
 
@@ -89,7 +89,7 @@
                     android:id="@+id/tv_recovered"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cases"
+                    android:text="recovered"
                     android:textColor="@color/black"
                     android:textSize="20sp"/>
 
@@ -97,7 +97,7 @@
                     android:id="@+id/tv_critical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Country"
+                    android:text="critical"
                     android:textColor="@color/black"
                     android:textSize="20sp"/>
 

@@ -7,6 +7,7 @@ import qtec.live.corona.model.GetGlobalModel;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
 
@@ -14,5 +15,6 @@ public interface ApiInterface {
     Call<GetGlobalModel> getGlobalDetails();
 
     @GET(HttpParam.API_GET_ALL_COUNTRY_COUNT)
-    Call<List<GetCountryModel>> getCountryDetails();
+    Call<List<GetCountryModel>> getCountryDetails(@Query("item_type") String item_type,
+                                                  @Query("key") String keyword);
 }
