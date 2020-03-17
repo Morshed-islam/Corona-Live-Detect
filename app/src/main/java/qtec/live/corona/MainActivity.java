@@ -30,7 +30,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private ActionBar toolbar;
 
     @Override
@@ -38,18 +37,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-
         toolbar = getSupportActionBar();
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         toolbar.setTitle("Corona Live");
-
-//        getGlobalData();
-//        getCountriesData();
 
 
         loadFragment(new Global());
@@ -85,34 +78,24 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-
-
-
-    private void getCountriesData(){
+    private void getCountriesData() {
 
         ApiInterface apiInterface = ApiUtils.getApiInterface();
         Call<List<GetCountryModel>> call = apiInterface.getCountryDetails();
-
 
         call.enqueue(new Callback<List<GetCountryModel>>() {
             @Override
             public void onResponse(Call<List<GetCountryModel>> call, Response<List<GetCountryModel>> response) {
 
+                if (response.isSuccessful()) {
 
-                if (response.isSuccessful()){
-
-                    for (GetCountryModel model : response.body()){
-
-                        Log.e("countries", "onResponse: "+model.getCountry());
-
+                    for (GetCountryModel model : response.body()) {
+                        Log.e("countries", "onResponse: " + model.getCountry());
                     }
 
-                }else {
-
+                } else {
                     Toast.makeText(MainActivity.this, "below response", Toast.LENGTH_SHORT).show();
-
                 }
-
             }
 
             @Override
@@ -122,9 +105,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
-
 
     private void loadFragment(Fragment fragment) {
         // load fragment

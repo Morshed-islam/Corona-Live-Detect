@@ -1,4 +1,4 @@
-package qtec.live.corona;
+package qtec.live.corona.adapter;
 
 import android.content.Context;
 import android.view.View;
