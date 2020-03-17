@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
     <LinearLayout
         android:id="@+id/first_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -57,6 +57,7 @@
         android:id="@+id/second_layout"
         android:layout_below="@+id/first_layout"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -103,9 +104,11 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/third_layout"
         android:layout_below="@+id/second_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView

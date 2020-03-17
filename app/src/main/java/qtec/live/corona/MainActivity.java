@@ -1,7 +1,6 @@
 package qtec.live.corona;
 
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -11,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -18,6 +19,9 @@ import java.util.List;
 
 import qtec.live.corona.api.ApiInterface;
 import qtec.live.corona.api.ApiUtils;
+import qtec.live.corona.fragment.About;
+import qtec.live.corona.fragment.Country;
+import qtec.live.corona.fragment.Global;
 import qtec.live.corona.model.GetCountryModel;
 import qtec.live.corona.model.GetGlobalModel;
 import retrofit2.Call;
@@ -27,7 +31,6 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
 
-    private TextView _cases,_deaths,_recovered;
     private ActionBar toolbar;
 
     @Override
@@ -36,9 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-//        _cases = findViewById(R.id.cases);
-//        _deaths = findViewById(R.id.deaths);
-//        _recovered = findViewById(R.id.recovered);
+
 
         toolbar = getSupportActionBar();
 
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 //        getCountriesData();
 
 
+        loadFragment(new Global());
     }
 
 
@@ -62,13 +64,19 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_global:
-                    toolbar.setTitle("Shop");
+                    toolbar.setTitle("Global");
+                    fragment = new Global();
+                    loadFragment(fragment);
                     return true;
                 case R.id.navigation_country:
-                    toolbar.setTitle("My Gifts");
+                    toolbar.setTitle("Country");
+                    fragment = new Country();
+                    loadFragment(fragment);
                     return true;
                 case R.id.navigation_about:
-                    toolbar.setTitle("Cart");
+                    toolbar.setTitle("About");
+                    fragment = new About();
+                    loadFragment(fragment);
                     return true;
 
             }
@@ -77,36 +85,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    private void getGlobalData() {
 
-        ApiInterface apiInterface = ApiUtils.getApiInterface();
-        Call<GetGlobalModel> call = apiInterface.getGlobalDetails();
-
-        call.enqueue(new Callback<GetGlobalModel>() {
-            @Override
-            public void onResponse(Call<GetGlobalModel> call, Response<GetGlobalModel> response) {
-
-                if (response.isSuccessful()) {
-
-                    Log.e("death", "onResponse: " + response.body().getDeaths());
-
-                    _cases.setText(""+response.body().getCases());
-                    _deaths.setText(""+response.body().getDeaths());
-                    _recovered.setText(""+response.body().getRecovered());
-                } else {
-                    Toast.makeText(MainActivity.this, "below response", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<GetGlobalModel> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "server error", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-    }
 
 
     private void getCountriesData(){
@@ -144,5 +123,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+
+    private void loadFragment(Fragment fragment) {
+        // load fragment
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
