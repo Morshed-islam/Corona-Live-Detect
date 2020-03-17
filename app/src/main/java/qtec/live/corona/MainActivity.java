@@ -1,11 +1,18 @@
 package qtec.live.corona;
 
-import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -21,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private TextView _cases,_deaths,_recovered;
+    private ActionBar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,15 +36,45 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        _cases = findViewById(R.id.cases);
-        _deaths = findViewById(R.id.deaths);
-        _recovered = findViewById(R.id.recovered);
+//        _cases = findViewById(R.id.cases);
+//        _deaths = findViewById(R.id.deaths);
+//        _recovered = findViewById(R.id.recovered);
 
-        getGlobalData();
+        toolbar = getSupportActionBar();
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        toolbar.setTitle("Corona Live");
+
+//        getGlobalData();
 //        getCountriesData();
 
 
     }
+
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment;
+            switch (item.getItemId()) {
+                case R.id.navigation_global:
+                    toolbar.setTitle("Shop");
+                    return true;
+                case R.id.navigation_country:
+                    toolbar.setTitle("My Gifts");
+                    return true;
+                case R.id.navigation_about:
+                    toolbar.setTitle("Cart");
+                    return true;
+
+            }
+            return false;
+        }
+    };
 
 
     private void getGlobalData() {
