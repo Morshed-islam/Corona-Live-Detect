@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class Country extends Fragment {
     private List<GetCountryModel> list;
     private CountryRecyclerAdapter adapter;
     private ProgressBar progressBar;
+    private TextView count;
 
 
     public Country() {
@@ -54,6 +56,7 @@ public class Country extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_country, container, false);
 
+        count = view.findViewById(R.id.cases_count);
         list = new ArrayList<>();
         recyclerView = view.findViewById(R.id.rc_view);
         progressBar = view.findViewById(R.id.main_progressBar);
@@ -79,11 +82,22 @@ public class Country extends Fragment {
             @Override
             public void onResponse(Call<List<GetCountryModel>> call, Response<List<GetCountryModel>> response) {
 
+                int sum =0;
                 if (response.isSuccessful()) {
-
                     progressBar.setVisibility(View.GONE);
+
                     for (GetCountryModel model : response.body()) {
                         Log.e("countries", "onResponse: " + model.getCountry());
+
+                        for (int i=0; i<list.size(); i++){
+                            Log.e("List", "list size: "+i);
+                            sum+=list.get(i).getCases();
+                        }
+                        Log.e("List", "cases sum: "+sum );
+
+
+                        count.setText(""+sum);
+
                         list.add(model);
                         adapter.notifyDataSetChanged();
                     }

@@ -42,8 +42,9 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryRecycler
         holder._cases_active.setText(""+list.get(position).getActive());
         holder._death.setText(""+list.get(position).getDeaths());
         holder._death_today.setText(""+list.get(position).getTodayDeaths());
-        holder._recovered.setText(String.valueOf(list.get(position).getRecovered()));
+        holder._recovered.setText(""+list.get(position).getRecovered());
         holder._critical.setText(""+list.get(position).getCritical());
+
 
     }
 
@@ -72,6 +73,27 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryRecycler
             _critical = itemView.findViewById(R.id.tv_critical);
 
         }
+
+
+
+
+    }
+
+    public StringBuilder convertNumberIntoBangla(String str){
+        char[] arabicChars = {'০','১','২','৩','৪','৫','৬','৭','৮','৯'};
+        StringBuilder builder = new StringBuilder();
+        for(int i =0;i<str.length();i++)
+        {
+            if(Character.isDigit(str.charAt(i)))
+            {
+                builder.append(arabicChars[(int)(str.charAt(i))-48]);
+            }
+            else
+            {
+                builder.append(str.charAt(i));
+            }
+        }
+        return builder;
     }
 
 

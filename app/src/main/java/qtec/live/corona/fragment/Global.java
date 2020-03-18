@@ -1,6 +1,7 @@
 package qtec.live.corona.fragment;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,12 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
 
 import qtec.live.corona.MainActivity;
 import qtec.live.corona.R;
@@ -53,6 +60,8 @@ public class Global extends Fragment {
         _secondLayout = view.findViewById(R.id.second_layout);
         _thirdLayout = view.findViewById(R.id.third_layout);
 
+
+        new globalRatioJSOUP().execute();
 
         getGlobalData();
         return view;
@@ -101,5 +110,50 @@ public class Global extends Fragment {
 
 
     }
+
+
+    private class globalRatioJSOUP extends AsyncTask<Void,Void,Boolean>{
+
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+
+            Document doc;
+            Elements simplifiedData;
+
+            try {
+                doc = Jsoup.connect("https://www.worldometers.info/coronavirus/").get();
+
+                simplifiedData = doc.select("div.content-inner");
+
+                Elements currentlyInfectedPatients = simplifiedData.select("div.number-table-main");
+//                Elements mTime = simplifiedData.select("div.info > div.additional > span.time");
+//                Elements mLink = simplifiedData.select("div.each > a");
+
+
+
+
+                Log.e("jsoup", "jsoup data-: "+currentlyInfectedPatients.toString());
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+        }
+    }
+
 
 }

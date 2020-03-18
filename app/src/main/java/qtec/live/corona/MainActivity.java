@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        toolbar.setTitle("Corona Live");
+        toolbar.setTitle("Corona Live Stats");
 
 
         loadFragment(new Global());
@@ -76,8 +76,6 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
-
-
 
 
     private void loadFragment(Fragment fragment) {
