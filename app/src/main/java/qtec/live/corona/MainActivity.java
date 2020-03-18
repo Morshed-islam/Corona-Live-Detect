@@ -35,6 +35,9 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private ActionBar toolbar;
+    int view = R.layout.activity_main;
+    private static final int TIME_INTERVAL = 2000;
+    private long mBackPressed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,5 +90,17 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.fragment_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
+            super.onBackPressed();
+            System.exit(1);
+            return;
+        } else {
+            Toast.makeText(getBaseContext(), "Click two times to close an activity",    Toast.LENGTH_SHORT).show();
+        }
+        mBackPressed = System.currentTimeMillis();
     }
 }

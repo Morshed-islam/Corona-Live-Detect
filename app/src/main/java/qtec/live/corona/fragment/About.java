@@ -31,4 +31,9 @@ public class About extends Fragment {
         return inflater.inflate(R.layout.fragment_about, container, false);
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
 }

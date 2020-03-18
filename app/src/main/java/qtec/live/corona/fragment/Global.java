@@ -218,5 +218,10 @@ public class Global extends Fragment {
         }
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
 
 }

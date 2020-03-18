@@ -40,7 +40,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#DADADA"
             android:orientation="horizontal"
             android:weightSum="3">
 
@@ -58,7 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
-                    android:text="10000"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -95,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="serif"
-                    android:text="666"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -104,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="serif"
-                    android:text="Today"
+                    android:text="Today Cases"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
@@ -126,23 +125,20 @@
 
 
                 <TextView
-                    android:id="@+id/tv_recovered"
+                    android:id="@+id/tv_deaths"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:text="45"
+                    android:text="0"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-
                 <TextView
-                    android:id="@+id/tv_cases_active"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="serif"
-                    android:text="Active"
+                    android:text="Deaths"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
+
 
 
             </LinearLayout>
@@ -165,7 +161,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#DADADA"
             android:orientation="horizontal"
             android:weightSum="2">
 
@@ -177,19 +172,20 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_deaths"
+                    android:id="@+id/tv_deaths_today"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Deaths"
+                    android:text="Today Deaths"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
+
 
 
             </LinearLayout>
@@ -209,19 +205,22 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_deaths_today"
+                    android:id="@+id/tv_cases_active"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1"
+                    android:fontFamily="serif"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="today"
+                    android:fontFamily="serif"
+                    android:text="Active"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
+
 
 
             </LinearLayout>
@@ -245,7 +244,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#DADADA"
             android:orientation="horizontal"
             android:weightSum="2">
 
@@ -257,10 +255,11 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_recovered"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
-                    android:text="4"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
