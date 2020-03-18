@@ -1,6 +1,8 @@
 package qtec.live.corona;
 
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         toolbar.setTitle("Corona Live Stats");
+
+
 
         loadFragment(new Global());
     }
@@ -103,4 +107,9 @@ public class MainActivity extends AppCompatActivity {
         }
         mBackPressed = System.currentTimeMillis();
     }
+
+
+
+
+
 }

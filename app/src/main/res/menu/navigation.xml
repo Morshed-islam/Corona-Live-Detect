@@ -3,19 +3,17 @@
 
     <item
         android:id="@+id/navigation_global"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_global"
         android:title="Global" />
 
     <item
         android:id="@+id/navigation_country"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_flag"
         android:title="Country" />
 
     <item
         android:id="@+id/navigation_about"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_about"
         android:title="About" />
-
-
 
 </menu>

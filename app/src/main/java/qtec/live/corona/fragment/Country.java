@@ -9,12 +9,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -29,6 +31,7 @@ import qtec.live.corona.adapter.CountryRecyclerAdapter;
 import qtec.live.corona.api.ApiInterface;
 import qtec.live.corona.api.ApiUtils;
 import qtec.live.corona.model.GetCountryModel;
+import qtec.live.corona.utils.InternetCheck;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -68,16 +71,25 @@ public class Country extends Fragment {
         adapter = new CountryRecyclerAdapter(getContext(),list);
         recyclerView.setAdapter(adapter);
 
-        getCountriesData("users", "");
+        InternetCheck check = new InternetCheck();
+        if (check.isInternetOn(getActivity()) == false){
+            Toast.makeText(getContext(), "Please Check Your Internet!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+
+        }else {
+
+            getCountriesData();
+        }
+
 
     return view;
     }
 
 
-    private void getCountriesData(String type, String key) {
+    private void getCountriesData() {
 
         ApiInterface apiInterface = ApiUtils.getApiInterface();
-        Call<List<GetCountryModel>> call = apiInterface.getCountryDetails(type,key);
+        Call<List<GetCountryModel>> call = apiInterface.getCountryDetails();
 
         call.enqueue(new Callback<List<GetCountryModel>>() {
             @Override
@@ -129,23 +141,24 @@ public class Country extends Fragment {
     public void onPrepareOptionsMenu(Menu menu) {
         getActivity().getMenuInflater().inflate(R.menu.search, menu);
         MenuItem mSearchMenuItem = menu.findItem(R.id.search);
-        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) mSearchMenuItem.getActionView();
-        searchView.setSearchableInfo(
-                searchManager.getSearchableInfo(getActivity().getComponentName()));
 
-        searchView.setIconifiedByDefault(false);
+//        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) mSearchMenuItem.getActionView();
+//        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+//        searchView.setIconifiedByDefault(false);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                getCountriesData("users", query);
+                adapter.getFilter().filter(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                getCountriesData("users", newText);
+                adapter.getFilter().filter(newText);
                 return false;
             }
         });

@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="50dp"
     tools:context=".fragment.Global">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+
+            <RelativeLayout
+                android:id="@+id/rl_layout_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -25,9 +28,11 @@
                     android:layout_height="match_parent"
                     app:layout_constraintBottom_toTopOf="@+id/main_progressBar" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
-            <LinearLayout
+            <RelativeLayout
+                android:layout_below="@+id/rl_layout_top"
+                android:id="@+id/rl_layout_middle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -36,13 +41,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layout_constraintBottom_toTopOf="@+id/main_progressBar" />
-            </LinearLayout>
+            </RelativeLayout>
 
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:layout_below="@+id/rl_layout_middle"
                 android:orientation="vertical">
 
                 <ProgressBar
@@ -51,9 +56,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center" />
-            </LinearLayout>
 
-        </LinearLayout>
+            </RelativeLayout>
+
+        </RelativeLayout>
 
     </ScrollView>
 

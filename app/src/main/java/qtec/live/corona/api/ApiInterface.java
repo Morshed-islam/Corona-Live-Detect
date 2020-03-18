@@ -20,6 +20,6 @@ public interface ApiInterface {
     Call<GetGlobalModel> getGlobalDetails();
 
     @GET(HttpParam.API_GET_ALL_COUNTRY_COUNT)
-    Call<List<GetCountryModel>> getCountryDetails(@Query("item_type") String item_type,
-                                                  @Query("key") String keyword);
+    Call<List<GetCountryModel>> getCountryDetails();
+//    @Query("item_type") String item_type,
 }

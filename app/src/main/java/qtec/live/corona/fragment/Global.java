@@ -2,6 +2,8 @@ package qtec.live.corona.fragment;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -21,12 +23,14 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import qtec.live.corona.MainActivity;
 import qtec.live.corona.R;
 import qtec.live.corona.api.ApiInterface;
 import qtec.live.corona.api.ApiUtils;
 import qtec.live.corona.model.GetGlobalModel;
+import qtec.live.corona.utils.InternetCheck;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -59,9 +63,17 @@ public class Global extends Fragment {
 
         initViews(view);
 
-        new globalRatioJSOUP().execute();
+        InternetCheck check = new InternetCheck();
+        if (check.isInternetOn(getActivity()) == false){
+            Toast.makeText(getContext(), "Please Check Your Internet!", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
 
-        getGlobalData();
+        }else {
+            new globalRatioJSOUP().execute();
+            getGlobalData();
+        }
+
+
         return view;
     }
 
@@ -104,9 +116,15 @@ public class Global extends Fragment {
 
                     Log.e("death", "onResponse: " + response.body().getDeaths());
 
-                    _cases.setText("" + response.body().getCases());
-                    _deaths.setText("" + response.body().getDeaths());
-                    _recovered.setText("" + response.body().getRecovered());
+
+                    DecimalFormat formatter = new DecimalFormat("###,###");
+                    String cases = formatter.format( response.body().getCases());
+                    String deaths = formatter.format( response.body().getDeaths());
+                    String recovered = formatter.format( response.body().getRecovered());
+
+                    _cases.setText(cases);
+                    _deaths.setText(deaths);
+                    _recovered.setText(recovered);
                 } else {
                     Toast.makeText(getContext(), "below response", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
@@ -219,9 +237,17 @@ public class Global extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
     }
+
+
 
 
 }
