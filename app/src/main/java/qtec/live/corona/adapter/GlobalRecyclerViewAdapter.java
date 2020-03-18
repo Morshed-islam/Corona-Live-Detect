@@ -12,6 +12,12 @@ import java.util.List;
 
 import qtec.live.corona.model.GetGlobalModel;
 
+/**
+ * Created By Morshed
+ * Software Engineer -> Qtec Solution
+ * Date 18/03/2020
+ */
+
 public class GlobalRecyclerViewAdapter extends RecyclerView.Adapter<GlobalRecyclerViewAdapter.MyViewHolder> {
 
     private Context mContext;

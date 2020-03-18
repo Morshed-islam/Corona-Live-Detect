@@ -27,7 +27,11 @@ import qtec.live.corona.model.GetGlobalModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
+/**
+ * Created By Morshed
+ * Software Engineer -> Qtec Solution
+ * Date 18/03/2020
+ */
 public class MainActivity extends AppCompatActivity {
 
     private ActionBar toolbar;
@@ -43,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         toolbar.setTitle("Corona Live Stats");
-
 
         loadFragment(new Global());
     }

@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import qtec.live.corona.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Created By Morshed
+ * Software Engineer -> Qtec Solution
+ * Date 18/03/2020
  */
 public class About extends Fragment {
 

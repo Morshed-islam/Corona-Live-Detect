@@ -3,28 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:paddingBottom="15dp">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
         <LinearLayout
             android:id="@+id/layout_cases"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            >
-
-
+            android:visibility="gone">
 
             <!--    active cases-->
             <LinearLayout
                 android:id="@+id/layout_active_cases"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="225dp"
                 android:background="#DADADA"
                 android:orientation="vertical">
 
@@ -36,8 +33,9 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="5dp"
                     android:orientation="vertical"
+                    android:paddingBottom="5dp"
                     app:cardCornerRadius="5dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -199,9 +197,9 @@
             <!--    closed cases-->
 
             <LinearLayout
-                android:layout_below="@+id/layout_active_cases"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="225dp"
+                android:layout_below="@+id/layout_active_cases"
                 android:background="#DADADA"
                 android:orientation="vertical">
 
@@ -213,8 +211,9 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="5dp"
                     android:orientation="vertical"
+                    android:paddingBottom="5dp"
                     app:cardCornerRadius="5dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -375,8 +374,6 @@
         </LinearLayout>
 
     </ScrollView>
-
-
 
 
 </RelativeLayout>

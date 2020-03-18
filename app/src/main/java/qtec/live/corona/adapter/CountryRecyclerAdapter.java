@@ -15,8 +15,12 @@ import java.util.List;
 
 import qtec.live.corona.R;
 import qtec.live.corona.model.GetCountryModel;
-import qtec.live.corona.model.GetGlobalModel;
 
+/**
+ * Created By Morshed
+ * Software Engineer -> Qtec Solution
+ * Date 18/03/2020
+ */
 public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryRecyclerAdapter.MyViewHolder>{
 
     private Context mContext;
@@ -73,8 +77,6 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryRecycler
             _critical = itemView.findViewById(R.id.tv_critical);
 
         }
-
-
 
 
     }

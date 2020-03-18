@@ -34,7 +34,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Created By Morshed
+ * Software Engineer -> Qtec Solution
+ * Date 18/03/2020
  */
 public class Country extends Fragment {
 
@@ -43,7 +45,6 @@ public class Country extends Fragment {
     private CountryRecyclerAdapter adapter;
     private ProgressBar progressBar;
     private TextView count;
-
 
     public Country() {
         // Required empty public constructor

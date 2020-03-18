@@ -9,6 +9,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static okhttp3.logging.HttpLoggingInterceptor.Level.BODY;
 import static okhttp3.logging.HttpLoggingInterceptor.Level.NONE;
 
+/**
+ * Created By Morshed
+ * Software Engineer -> Qtec Solution
+ * Date 18/03/2020
+ */
+
 public class ApiUtils {
 
     private static Retrofit retrofit = null;

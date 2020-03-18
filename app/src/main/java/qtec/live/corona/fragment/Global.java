@@ -32,7 +32,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Created By Morshed
+ * Software Engineer -> Qtec Solution
+ * Date 18/03/2020
  */
 public class Global extends Fragment {
 
@@ -41,13 +43,13 @@ public class Global extends Fragment {
     private TextView _tv_currently_patient, _tv_condition, _tv_condition_ratio, _tv_critical, _tv_critical_ratio;
     //closed cases
     private TextView _tv_closed_patient, _tv_recovered, _tv_recovered_ratio, _tv_death, _tv_death_ratio;
-    private LinearLayout _firstLayout, _secondLayout, _thirdLayout;
+    //    private LinearLayout _firstLayout, _secondLayout, _thirdLayout;
+    private LinearLayout _layout_cases, _linear_layout_top;
     private ProgressBar progressBar;
 
     public Global() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,7 +58,6 @@ public class Global extends Fragment {
         View view = inflater.inflate(R.layout.fragment_global, container, false);
 
         initViews(view);
-
 
         new globalRatioJSOUP().execute();
 
@@ -69,10 +70,9 @@ public class Global extends Fragment {
         _deaths = view.findViewById(R.id.deaths);
         _recovered = view.findViewById(R.id.recovered);
         progressBar = view.findViewById(R.id.main_progressBar);
-        _firstLayout = view.findViewById(R.id.first_layout);
-        _secondLayout = view.findViewById(R.id.second_layout);
-        _thirdLayout = view.findViewById(R.id.third_layout);
 
+        _layout_cases = view.findViewById(R.id.layout_cases);
+        _linear_layout_top = view.findViewById(R.id.linear_layout_top);
 
         //active and closed cases
         _tv_currently_patient = view.findViewById(R.id.active_case_patient);
@@ -102,10 +102,6 @@ public class Global extends Fragment {
 
                 if (response.isSuccessful()) {
 
-                    _firstLayout.setVisibility(View.VISIBLE);
-                    _secondLayout.setVisibility(View.VISIBLE);
-                    _thirdLayout.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.GONE);
                     Log.e("death", "onResponse: " + response.body().getDeaths());
 
                     _cases.setText("" + response.body().getCases());
@@ -114,9 +110,6 @@ public class Global extends Fragment {
                 } else {
                     Toast.makeText(getContext(), "below response", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
-                    _firstLayout.setVisibility(View.GONE);
-                    _secondLayout.setVisibility(View.GONE);
-                    _thirdLayout.setVisibility(View.GONE);
 
                 }
             }
@@ -125,9 +118,7 @@ public class Global extends Fragment {
             public void onFailure(Call<GetGlobalModel> call, Throwable t) {
                 Toast.makeText(getContext(), "server error", Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
-                _firstLayout.setVisibility(View.GONE);
-                _secondLayout.setVisibility(View.GONE);
-                _thirdLayout.setVisibility(View.GONE);
+
             }
         });
 
@@ -194,9 +185,9 @@ public class Global extends Fragment {
                         //closed case setText
                         _tv_closed_patient.setText(mClosedPatient);
                         _tv_recovered.setText(mRecovered);
-                        _tv_recovered_ratio.setText("("+mClosedRecoveredRatio+"%)");
+                        _tv_recovered_ratio.setText("(" + mClosedRecoveredRatio + "%)");
                         _tv_death.setText(mDeath);
-                        _tv_death_ratio.setText("("+mClosedDeathRatio+"%)");
+                        _tv_death_ratio.setText("(" + mClosedDeathRatio + "%)");
                     }
                 });
 
@@ -221,6 +212,9 @@ public class Global extends Fragment {
         @Override
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
+            _layout_cases.setVisibility(View.VISIBLE);
+            _linear_layout_top.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.GONE);
         }
     }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.Global">
 
     <ScrollView
@@ -15,39 +15,47 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include android:layout_height="match_parent"
+            <LinearLayout
                 android:layout_width="match_parent"
-                app:layout_constraintBottom_toTopOf="@+id/main_progressBar"
-                layout="@layout/global_custom_design"/>
+                android:layout_height="wrap_content">
 
+                <include
+                    layout="@layout/global_custom_design"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toTopOf="@+id/main_progressBar" />
 
-            <include android:layout_height="match_parent"
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                app:layout_constraintBottom_toTopOf="@+id/main_progressBar"
-                layout="@layout/global_cases_layout_design"/>
+                android:layout_height="wrap_content">
 
-            <ProgressBar
-                android:id="@+id/main_progressBar"
-                style="?android:attr/progressBarStyle"
+                <include
+                    layout="@layout/global_cases_layout_design"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toTopOf="@+id/main_progressBar" />
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:foregroundGravity="center"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ProgressBar
+                    android:id="@+id/main_progressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center" />
+            </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
-
-
-
-
-
-
-
 
 
 </RelativeLayout>

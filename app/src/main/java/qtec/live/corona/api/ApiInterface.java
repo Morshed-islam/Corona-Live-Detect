@@ -8,6 +8,11 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+/**
+ * Created By Morshed
+ * Software Engineer -> Qtec Solution
+ * Date 18/03/2020
+ */
 
 public interface ApiInterface {
 
