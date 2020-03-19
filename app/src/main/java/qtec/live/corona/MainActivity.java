@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_global:
-                    toolbar.setTitle("Global");
+                    toolbar.setTitle("Corona Live Stats");
                     fragment = new Global();
                     loadFragment(fragment);
                     return true;
