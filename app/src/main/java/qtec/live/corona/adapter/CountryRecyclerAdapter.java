@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +29,11 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryRecycler
 
     private Context mContext;
     private List<GetCountryModel> list = new ArrayList<>();
+    private List<GetCountryModel> filteredDataList;
 
     public CountryRecyclerAdapter(Context mContext, List<GetCountryModel> list) {
         this.mContext = mContext;
+        this.filteredDataList = list;
         this.list = list;
     }
 
@@ -43,21 +46,38 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryRecycler
 
     @Override
     public void onBindViewHolder(@NonNull CountryRecyclerAdapter.MyViewHolder holder, int position) {
-        holder._country.setText(""+list.get(position).getCountry());
-        holder._cases.setText(""+list.get(position).getCases());
-        holder._cases_today.setText(""+list.get(position).getTodayCases());
-        holder._cases_active.setText(""+list.get(position).getActive());
-        holder._death.setText(""+list.get(position).getDeaths());
-        holder._death_today.setText(""+list.get(position).getTodayDeaths());
-        holder._recovered.setText(""+list.get(position).getRecovered());
-        holder._critical.setText(""+list.get(position).getCritical());
+
+        DecimalFormat formatter = new DecimalFormat("###,###");
+
+        holder._country.setText(""+filteredDataList.get(position).getCountry());
+
+        String cases = formatter.format(filteredDataList.get(position).getCases());
+        holder._cases.setText(cases);
+
+        String cases_today = formatter.format(filteredDataList.get(position).getTodayCases());
+        holder._cases_today.setText(cases_today);
+
+        String cases_active = formatter.format(filteredDataList.get(position).getActive());
+        holder._cases_active.setText(cases_active);
+
+        String total_death = formatter.format(filteredDataList.get(position).getDeaths());
+        holder._death.setText(total_death);
+
+        String today_death = formatter.format(filteredDataList.get(position).getTodayDeaths());
+        holder._death_today.setText(today_death);
+
+        String recovered = formatter.format(filteredDataList.get(position).getRecovered());
+        holder._recovered.setText(recovered);
+
+        String critical = formatter.format(filteredDataList.get(position).getCritical());
+        holder._critical.setText(critical);
 
 
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return filteredDataList.size();
     }
 
 
@@ -86,49 +106,50 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryRecycler
 
     }
 
+
     @Override
     public Filter getFilter() {
-        return countryFilter;
-    }
-    List<GetCountryModel> filterList;
-    private Filter countryFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-             filterList = new ArrayList<>();
 
-            if (charSequence == null || charSequence.length() ==0){
-                filterList.addAll(list);
-            }else {
-                String filterPattern = charSequence.toString().toLowerCase().trim();
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
 
-                for (GetCountryModel model : list){
+                String searchString = charSequence.toString();
 
-                    if (model.getCountry().toLowerCase().contains(filterPattern)){
-                        filterList.add(model);
+                if (searchString.isEmpty()) {
+
+                    filteredDataList = list;
+
+                } else {
+
+                    ArrayList<GetCountryModel> tempFilteredList = new ArrayList<>();
+
+                    for (GetCountryModel country : list) {
+
+                        // search for user title
+                        if (country.getCountry().toLowerCase().contains(searchString)) {
+
+                            tempFilteredList.add(country);
+                        }
                     }
+
+                    filteredDataList = tempFilteredList;
                 }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filteredDataList;
+                return filterResults;
             }
 
-            FilterResults results = new FilterResults();
-            results.values = filterList;
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-
-            list.clear();
-            list.addAll((List) filterResults.values);
-           updateList(list);
-
-        }
-    };
-
-
-    public void updateList(List<GetCountryModel> list){
-        filterList = list;
-        notifyDataSetChanged();
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filteredDataList = (ArrayList<GetCountryModel>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
+
+
 
 
     public StringBuilder convertNumberIntoBangla(String str){

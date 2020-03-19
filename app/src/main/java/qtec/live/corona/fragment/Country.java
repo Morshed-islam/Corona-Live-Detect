@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,14 +17,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ProgressBar;
-import android.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import qtec.live.corona.MainActivity;
 import qtec.live.corona.R;
 import qtec.live.corona.adapter.CountryRecyclerAdapter;
 import qtec.live.corona.api.ApiInterface;
@@ -142,9 +140,13 @@ public class Country extends Fragment {
         getActivity().getMenuInflater().inflate(R.menu.search, menu);
         MenuItem mSearchMenuItem = menu.findItem(R.id.search);
 
-//        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) mSearchMenuItem.getActionView();
-//        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+//        SearchView searchView = (SearchView) mSearchMenuItem.getActionView();
+
+        SearchView searchView = null;
+        if (mSearchMenuItem != null) {
+            searchView = (SearchView) mSearchMenuItem.getActionView();
+        }
+
 
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
 //        searchView.setIconifiedByDefault(false);
@@ -152,7 +154,6 @@ public class Country extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                adapter.getFilter().filter(query);
                 return false;
             }
 

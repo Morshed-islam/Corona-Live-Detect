@@ -58,16 +58,16 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:text=""
+                    android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textSize="25sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
-                    android:text="Cases"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:text="Virus Cases"
+                    android:textSize="15sp"
 
                     />
 
@@ -95,8 +95,9 @@
                     android:layout_gravity="center"
                     android:fontFamily="serif"
                     android:text=""
+                    android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textSize="25sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -104,8 +105,7 @@
                     android:layout_gravity="center"
                     android:fontFamily="serif"
                     android:text="Today Cases"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -129,17 +129,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textStyle="bold"
+                    android:textColor="@color/red"
+                    android:textSize="25sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Deaths"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-
-
+                    android:text="Total Deaths"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -176,15 +174,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textStyle="bold"
+                    android:textColor="@color/red"
+                    android:textSize="25sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Today Deaths"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
 
 
 
@@ -210,16 +208,16 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textStyle="bold"
+                    android:textColor="@color/purple"
+                    android:textSize="25sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:text="Active"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
 
 
 
@@ -260,16 +258,16 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textStyle="bold"
+                    android:textColor="@color/green"
+                    android:textSize="25sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:text="Recovered"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
 
 
             </LinearLayout>
@@ -294,16 +292,16 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textStyle="bold"
+                    android:textColor="@color/coral"
+                    android:textSize="25sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
                     android:text="Critical"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
 
 
             </LinearLayout>

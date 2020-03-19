@@ -7,10 +7,13 @@ import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -235,6 +238,7 @@ public class Global extends Fragment {
             progressBar.setVisibility(View.GONE);
         }
     }
+
 
     @Override
     public void onResume() {
