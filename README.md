@@ -14,3 +14,16 @@ link 3: API All Countries:  https://coronavirus-19-api.herokuapp.com/countries
 
 link 4: API Global: https://coronavirus-19-api.herokuapp.com/all
 
+
+<h2>Global Statistics</h2>
+<img border="0" width="400" height="700" alt="corona" src="sample images/global.png" >
+
+<h2>Country Statistics</h2>
+<img border="0" width="400" height="700" alt="corona" src="sample images/country.png" >
+
+<h2>Search Specific Country</h2>
+<img border="0" width="400" height="700" alt="corona" src="sample images/searchbycountry.png" >
+
+
+<h2>About</h2>
+<img border="0" width="400" height="700" alt="corona" src="sample images/about.png" >
